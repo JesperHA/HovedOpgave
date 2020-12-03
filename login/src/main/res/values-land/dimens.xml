@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_welcome_bottom_margin">16dp</dimen>
+    <dimen name="login_bottom_margin">12dp</dimen>
+    <dimen name="login_welcome_login_top_margin">16dp</dimen>
+    <dimen name="login_welcome_indicator_margin_top">2dp</dimen>
+</resources>

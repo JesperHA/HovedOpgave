@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/root"
+                                                   android:layout_width="120dp"
+                                                   android:layout_height="wrap_content"
+                                                   android:background="?attr/selectableItemBackground"
+                                                   android:minHeight="80dp"
+                                                   android:orientation="vertical"
+                                                   android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/image_country_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textview_country_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:background="@color/color3"
+        tools:layout_height="24dp"
+        tools:layout_width="24dp" />
+
+    <TextView
+        android:id="@+id/textview_country_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:textAppearance="@style/Storytel.Login.TextAppearance.Body2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_country_flag"
+        tools:text="Denmark" />
+
+
+    <Space
+        android:id="@+id/marginSpacer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/image_country_flag"
+        app:layout_constraintTop_toTopOf="@+id/image_country_flag" />
+
+    <ImageView
+        android:id="@+id/selected"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/login_indicator_selected_country"
+        android:padding="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/marginSpacer"
+        app:layout_constraintStart_toStartOf="@+id/marginSpacer"
+        app:srcCompat="@drawable/ic_done_24px" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

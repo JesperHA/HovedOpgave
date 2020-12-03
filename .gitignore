@@ -1,0 +1,51 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+
+/app/build
+crashlytics-build.properties
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+
+## Directory-based project format:
+.idea/
+
+## File-based project format:
+*.ipr
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+
+# Android Studio
+.idea
+#.idea/workspace.xml - uncomment this and comment/delete .idea if it better suit your needs
+.gradle
+/*/local.properties
+/*/out
+/*/*/build
+/*/*/production
+*.iml
+*.iws
+*.ipr
+*~
+*.swp

@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+
+    <style name="Storytel.Login.Base" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorPrimaryInverse">@android:color/black</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">
+            @color/colorAccent
+        </item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="Storytel.Login" parent="Storytel.Login.Base">
+        <item name="android:windowTranslucentStatus" tools:targetApi="lollipop">true</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="lollipop">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+    </style>
+
+
+    <style name="Storytel.Login.TextAppearance.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Storytel.Login.TextAppearance.Body1" parent="TextAppearance.MaterialComponents.Body1">
+
+    </style>
+
+    <style name="Storytel.Login.TextAppearance.Body2" parent="TextAppearance.MaterialComponents.Body2">
+
+    </style>
+
+</resources>

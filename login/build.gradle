@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary true
+        multiDexEnabled true
+    }
+
+    buildFeatures.dataBinding = true
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+
+    implementation project(':base-ui')
+    implementation project(':base-util')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "androidx.appcompat:appcompat:$project.appcompat"
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$project.retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$project.retrofit_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$project.okhttpVersion"
+    implementation "com.squareup.okhttp3:okhttp:$project.okhttpVersion"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$project.okhttpVersion"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
+    implementation "com.facebook.android:facebook-login:6.1.0" // getting class file for com.facebook
+    // .AccessToken not found if facebook is not added in base, why?
+
+
+    implementation "androidx.constraintlayout:constraintlayout:$project.constraintlayout"
+    implementation "com.google.android.material:material:$project.material"
+    implementation "androidx.lifecycle:lifecycle-extensions:$project.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$project.lifecycle"
+    implementation "androidx.annotation:annotation:$project.annotation"
+
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.11.4'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.11.4'
+
+    implementation "com.google.dagger:hilt-android:$project.dagger_hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$project.dagger_hilt"
+
+    testImplementation "junit:junit:$project.junit_version"
+    testImplementation "org.mockito:mockito-core:$project.mockito"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$project.mockitokotlin"
+    testImplementation "androidx.arch.core:core-testing:$project.coretesting"
+
+    androidTestImplementation "androidx.test:runner:$project.test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$project.espresso"
+    androidTestImplementation "org.mockito:mockito-android:$project.mockito"
+}
+repositories {
+    mavenCentral()
+}

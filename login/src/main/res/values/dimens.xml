@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_default_margin">16dp</dimen>
+    <dimen name="login_welcome_bottom_margin">36dp</dimen>
+    <dimen name="login_bottom_margin">12dp</dimen>
+    <dimen name="login_progressbar_bottom_margin">72dp</dimen>
+    <dimen name="login_welcome_indicator_size">12dp</dimen>
+    <dimen name="login_welcome_indicator_margin">2dp</dimen>
+    <dimen name="login_welcome_indicator_margin_top">16dp</dimen>
+    <dimen name="login_welcome_login_margin">2dp</dimen>
+    <dimen name="login_button_width">295dp</dimen>
+    <dimen name="login_welcome_text_width">295dp</dimen>
+    <dimen name="login_welcome_login_top_margin">120dp</dimen>
+    <dimen name="login_bottom_margin_fab">16dp</dimen>
+</resources>

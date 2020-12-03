@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/color1</color>
+    <color name="colorPrimaryDark">@color/color3</color>
+    <color name="colorAccent">@color/color2</color>
+    <color name="colorSecondary">@color/storytel_red</color>
+    <color name="colorOnPrimary">@android:color/white</color>
+    <color name="colorOnSecondary">@android:color/white</color>
+    <color name="storytel_red">#ffe25e1a</color>
+
+
+    <color name="color1">#f4590a</color>
+    <color name="color2">#f78044</color>
+    <color name="color3">#b94408</color>
+</resources>

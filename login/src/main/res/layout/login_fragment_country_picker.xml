@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   style="@style/Widget.MaterialComponents.CardView"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="wrap_content"
+                                                   android:layout_marginStart="@dimen/login_default_margin"
+                                                   android:layout_marginTop="100dp"
+                                                   android:layout_marginEnd="@dimen/login_default_margin"
+                                                   android:animateLayoutChanges="true"
+                                                   android:minHeight="100dp"
+                                                   app:contentPadding="24dp"
+                                                   app:contentPaddingBottom="0dp"
+                                                   app:layout_constraintBottom_toBottomOf="parent"
+                                                   app:layout_constraintEnd_toEndOf="parent"
+                                                   app:layout_constraintStart_toStartOf="parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:spanCount="3" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSurface"
+            app:elevation="4dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/country_picker_title"
+                        android:textAppearance="@style/Storytel.Login.TextAppearance.Headline1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/country_picker_text_1"
+                        android:textAppearance="@style/Storytel.Login.TextAppearance.Body2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/country_picker_text_2"
+                        android:textAppearance="@style/Storytel.Login.TextAppearance.Body2" />
+
+                </LinearLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_action_button"
+            style="@style/Widget.MaterialComponents.FloatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="@dimen/login_bottom_margin_fab"
+            app:srcCompat="@drawable/ic_done_24px" />
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
+

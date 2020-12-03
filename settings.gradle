@@ -1,0 +1,3 @@
+include ':base-util'
+include ':booklibrary'
+include ':app', ':login', ':base-ui'

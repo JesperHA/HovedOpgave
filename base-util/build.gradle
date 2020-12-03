@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    compileSdkVersion rootProject.compileSdk
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion rootProject.minSdk
+        targetSdkVersion rootProject.targetSdk
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(':base-ui')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.core:core-ktx:$project.corektx"
+    implementation "com.squareup.retrofit2:retrofit:$project.retrofit_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$project.lifecycle"
+    implementation "com.google.dagger:hilt-android:$project.dagger_hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$project.dagger_hilt"
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+}

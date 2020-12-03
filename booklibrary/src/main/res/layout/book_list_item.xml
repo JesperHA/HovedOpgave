@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+    android:id="@+id/item"
+        tools:ignore="InvalidId">
+
+        <ImageView
+            android:id="@+id/book_cover_image"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="list_cover"
+            android:src="@android:drawable/ic_lock_silent_mode_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/bookshelf_item_title"
+
+            android:layout_width="0dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/bookshelf_item_more_button"
+            app:layout_constraintStart_toEndOf="@+id/book_cover_image"
+            app:layout_constraintTop_toTopOf="@+id/book_cover_image"
+            tools:text="@string/bookshelf_item_title"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/bookshelf_item_author"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/bookshelf_item_title"
+            app:layout_constraintStart_toStartOf="@+id/bookshelf_item_title"
+            app:layout_constraintTop_toBottomOf="@+id/bookshelf_item_title"
+            tools:text="Marshall Mathews" />
+
+        <ImageButton
+            android:id="@+id/bookshelf_item_more_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:background="@null"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bookshelf_item_author"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_more_button"
+            tools:ignore="VectorDrawableCompat"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

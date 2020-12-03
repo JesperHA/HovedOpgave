@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bookshelf_btm_nav"
+        android:icon="@drawable/bookshelf_vector_asset"
+        android:title="@string/bookshelf_menu_string" />
+
+    <item
+        android:id="@+id/search_btm_nav"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="@string/search_menu_string" />
+
+    <item
+        android:id="@+id/playlists_btm_nav"
+        android:icon="@drawable/playlist_vector_asset"
+        android:title="@string/playlist_menu_string"
+        />
+
+</menu>

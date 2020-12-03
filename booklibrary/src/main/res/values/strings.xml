@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fetch_button" translatable="false">fetch books</string>
+    <string name="bookshelf_item_title" translatable="false">book title</string>
+    <string name="create_playlist_string">Create Playlist</string>
+    <string name="add_to_playlist_string">Add to playlist</string>
+    <string name="playlist_title">Your playlists</string>
+    <string name="playlist_menu_string">Your playlists</string>
+    <string name="bookshelf_menu_string">My bookshelf</string>
+    <string name="search_menu_string">Search</string>
+    <string name="home_string">Home</string>
+    <string name="remove_from_playlist">Remove from this playlist</string>
+    <string name="delete_playlist_string">Delete this playlist</string>
+    <string name="update_playlist_string">Rename this playlist</string>
+    <string name="done_string">Done</string>
+    <string name="publisher_head">Forlag</string>
+    <string name="click_text">Tryk på teksten for at læse mere</string>
+</resources>
