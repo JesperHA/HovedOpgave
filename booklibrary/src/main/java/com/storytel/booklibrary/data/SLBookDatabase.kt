@@ -8,7 +8,7 @@ import com.storytel.booklibrary.BuildConfig
 import com.storytel.booklibrary.entities.*
 
 @Database(entities = [SLBookEntity::class, EBookEntity::class, ABookEntity::class,
-    BookEntity::class, PlaylistEntity::class, PlaylistSlBookCrossRef::class], version = 1, exportSchema = false)
+    BookEntity::class, PlaylistEntity::class, PlaylistSlBookCrossRef::class, HistoryEntity::class], version = 1, exportSchema = false)
 abstract class SLBookDatabase : RoomDatabase() {
 
     abstract val slBookRoomDatabaseDao: SLBookDatabaseDao

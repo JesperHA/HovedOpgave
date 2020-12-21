@@ -50,7 +50,10 @@ class SearchFragment : Fragment() {
         }, object : BookLibraryAdapter.onClickListener {
             override fun onClick(adapterPosition: Int) {
                 val adapt = binding.searchBooks.adapter as BookLibraryAdapter
-                val fragment = BookDetailsFragment.newInstance(adapt.data[adapterPosition].slBook.slbookId)
+                val slBookId = adapt.data[adapterPosition].slBook.slbookId
+                val fragment = BookDetailsFragment.newInstance(slBookId)
+
+                viewModel.addToHistory(slBookId)
                 activity?.supportFragmentManager
                         ?.beginTransaction()?.replace(R.id.frame_layout, fragment)
                         ?.commit()

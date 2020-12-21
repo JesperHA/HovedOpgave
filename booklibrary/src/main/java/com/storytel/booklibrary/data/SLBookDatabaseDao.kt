@@ -1,9 +1,11 @@
 package com.storytel.booklibrary.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import com.storytel.booklibrary.entities.*
 import timber.log.Timber
+import java.io.IOException
 
 
 @Dao
@@ -27,6 +29,26 @@ interface SLBookDatabaseDao {
     fun insertToPlaylist(playlistId: Long, slBookId: Long){
         insertPlaylistRef(PlaylistSlBookCrossRef(playlistId, slBookId, 0))
     }
+
+
+    //TODO: Figure out which conflict strategy to use here instead of REPLACE
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addBookToHistory(historyItem: HistoryEntity)
+
+    @Transaction
+    fun addToHistory(slBookId: Long){
+        val historyItem = HistoryEntity(0, slBookId)
+        try {
+            removeBookFromHistory(slBookId)
+        } catch (e: IOException) {
+            Timber.e("No entry exist in database, so nothing to delete")
+        }
+        addBookToHistory(historyItem)
+    }
+
+    @Query("DELETE FROM history_table WHERE sl_book_id = :slBookId")
+    fun removeBookFromHistory(slBookId: Long)
+
 
     // might be useless
     @Transaction
@@ -148,6 +170,28 @@ interface SLBookDatabaseDao {
 
     @Query("SELECT * FROM sl_book_table")
     fun getAllBooks(): LiveData<List<SlBookRelations>>
+
+
+    @Query("SELECT * FROM history_table ORDER BY history_order DESC")
+    fun fetchHistoryEntities(): LiveData<List<HistoryEntity>>
+
+    @Transaction
+    fun fetchHistory(list: List<HistoryEntity>): List<SlBookRelations> {
+//        val slBookRelationList = MutableLiveData<MutableList<SlBookRelations>>()
+        val slBookList = mutableListOf<SlBookRelations>()
+        try {
+//            val historyList: List<HistoryEntity> = fetchHistoryEntities()
+            list.forEach { item: HistoryEntity ->
+                val slBook = get(item.slBookId)
+                slBookList.add(slBook)
+            }
+//            slBookRelationList.value?.addAll(slBookList)
+        }catch (e: IOException) {
+            Timber.e("Exception in fetchHistory")
+        }
+
+        return slBookList
+    }
 
     @Query("DELETE FROM sl_book_table")
     fun clearSl()

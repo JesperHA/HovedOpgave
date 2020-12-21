@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.facebook.stetho.Stetho
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.storytel.booklibrary.ui.fragments.BookLibraryFragment
+import com.storytel.booklibrary.ui.fragments.LatestViewedFragment
 import com.storytel.booklibrary.ui.fragments.PlaylistFragment
 import com.storytel.booklibrary.ui.fragments.SearchFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -14,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
     lateinit var bookLibraryFragment : BookLibraryFragment
     lateinit var playlistFragment: PlaylistFragment
     lateinit var searchFragment: SearchFragment
+    lateinit var latestViewedFragment: LatestViewedFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
             bookLibraryFragment = BookLibraryFragment.newInstance()
             supportFragmentManager
                     .beginTransaction().replace(R.id.frame_layout, bookLibraryFragment)
-                    .addToBackStack("bookLibrary")
+                    .addToBackStack("library")
                     .commit()
         }else{
             bookLibraryFragment = supportFragmentManager.findFragmentById(R.id.frame_layout) as BookLibraryFragment
@@ -53,6 +55,13 @@ import dagger.hilt.android.AndroidEntryPoint
                         supportFragmentManager
                                 .beginTransaction().replace(R.id.frame_layout, searchFragment)
                                 .addToBackStack("search")
+                                .commit()
+                    }
+                    R.id.latest_btm_nav -> {
+                        latestViewedFragment = LatestViewedFragment.newInstance()
+                        supportFragmentManager
+                                .beginTransaction().replace(R.id.frame_layout, latestViewedFragment)
+                                .addToBackStack("history")
                                 .commit()
                     }
                 }

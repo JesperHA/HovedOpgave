@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.storytel.booklibrary.R
 import com.storytel.booklibrary.databinding.BookLibraryFragmentBinding
+import com.storytel.booklibrary.databinding.LatestViewedFragmentBinding
 import com.storytel.booklibrary.ui.BookLibraryViewModel
 import com.storytel.booklibrary.ui.adapters.BookLibraryAdapter
 import com.storytel.booklibrary.ui.adapters.BookLibraryAdapter.onClickListener
@@ -16,10 +17,11 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-@AndroidEntryPoint class BookLibraryFragment: Fragment() {
+@AndroidEntryPoint class LatestViewedFragment
+    : Fragment() {
 
     companion object {
-        fun newInstance() = BookLibraryFragment()
+        fun newInstance() = LatestViewedFragment()
     }
 
     @Inject lateinit var viewModel: BookLibraryViewModel
@@ -27,19 +29,19 @@ import javax.inject.Inject
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        activity?.title = "My Bookshelf"
-        return BookLibraryFragmentBinding.inflate(inflater).root
+        activity?.title = "History"
+        return LatestViewedFragmentBinding.inflate(inflater).root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        viewModel.fetchBookshelf()
 
-
-        val binding = BookLibraryFragmentBinding.bind(view)
+        val binding = LatestViewedFragmentBinding.bind(view)
         val adapter = BookLibraryAdapter(object : onClickListener {
             override fun onClick(adapterPosition: Int) {
-                val adapt = binding.bookshelf.adapter as BookLibraryAdapter
+                val adapt = binding.latest.adapter as BookLibraryAdapter
                 val fragment = BookLibraryDialogFragment.newInstance(adapt.data[adapterPosition].slBook.slbookId)
                 fragment.show(childFragmentManager, "book_library_dialog_fragment")
 
@@ -47,27 +49,22 @@ import javax.inject.Inject
 
         }, object : onClickListener {
             override fun onClick(adapterPosition: Int) {
-                val adapt = binding.bookshelf.adapter as BookLibraryAdapter
-                val slBookId = adapt.data[adapterPosition].slBook.slbookId
-                val fragment = BookDetailsFragment.newInstance(slBookId)
-
-                viewModel.addToHistory(slBookId)
-
+                val adapt = binding.latest.adapter as BookLibraryAdapter
+                val fragment = BookDetailsFragment.newInstance(adapt.data[adapterPosition].slBook.slbookId)
                 activity?.supportFragmentManager
                         ?.beginTransaction()?.replace(R.id.frame_layout, fragment)
                         ?.commit()
             }
         })
 
-        binding.swipeRefreshLibrary.setOnRefreshListener {
+        binding.swipeRefreshLatestViewed.setOnRefreshListener {
             viewModel.fetchBookshelf()
-            binding.swipeRefreshLibrary.isRefreshing = false
+            binding.swipeRefreshLatestViewed.isRefreshing = false
         }
 
-        binding.bookshelf.adapter = adapter
+        binding.latest.adapter = adapter
 
-        viewModel.slBooks.observe(viewLifecycleOwner, Observer {
-            adapter.data = it
+        viewModel.history.observe(viewLifecycleOwner, Observer {it?.let { adapter.data=it }
         })
 
 

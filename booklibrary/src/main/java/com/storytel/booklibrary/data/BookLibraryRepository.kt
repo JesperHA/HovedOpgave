@@ -27,6 +27,9 @@ class BookLibraryRepository @Inject constructor(private val bookLibraryApi: Book
     fun updatePlaylist(playlistId: Long, playlistName: String) = slBookDao.updatePlaylist(playlistId, playlistName)
     fun insertPlaylistAndSlBook(slBookId: Long, playlistName: String) = slBookDao.insertPlaylistWithCrossRef(slBookId, playlistName)
     suspend fun updatePlaylistOrder(from: Int, to: Int, playlistId: Long) = withContext(Dispatchers.IO) {slBookDao.updatePlaylistOrder(from, to, playlistId)}
+    fun addToHistory(slBookId: Long) = slBookDao.addToHistory(slBookId)
+    fun fetchHistoryEntities() = slBookDao.fetchHistoryEntities()
+    fun fetchHistory(list: List<HistoryEntity>) =  slBookDao.fetchHistory(list)
 
 
 

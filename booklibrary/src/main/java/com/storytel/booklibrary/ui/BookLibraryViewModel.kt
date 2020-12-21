@@ -4,10 +4,12 @@ import androidx.lifecycle.*
 import com.storytel.booklibrary.data.BookInfoWrapper
 import com.storytel.booklibrary.data.BookLibraryRepository
 import com.storytel.booklibrary.data.UiPlaylists
+import com.storytel.booklibrary.entities.HistoryEntity
 import com.storytel.booklibrary.entities.SlBookRelations
 import dagger.hilt.android.scopes.FragmentScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @FragmentScoped
@@ -15,10 +17,9 @@ class BookLibraryViewModel @Inject constructor(
         private val bookLibraryRepository: BookLibraryRepository) : ViewModel() {
 
     val slBooks = bookLibraryRepository.getAllSlBooks()
-    val playlistEntities = bookLibraryRepository.getAllPlaylistEntities()
     val bookDetails = MutableLiveData<BookInfoWrapper>()
 
-    //    private val _uiPlaylist = MutableLiveData<List<UiPlaylists>>()
+    val playlistEntities = bookLibraryRepository.getAllPlaylistEntities()
     val uiPlaylists: LiveData<List<UiPlaylists>>
 
     private val playlistId = MutableLiveData<Long>()
@@ -27,6 +28,17 @@ class BookLibraryViewModel @Inject constructor(
     private val searchField = MutableLiveData<String>()
     val searchFieldShow: LiveData<List<SlBookRelations>>
 
+
+//    val history = bookLibraryRepository.fetchHistory()
+    private val historyEntities = bookLibraryRepository.fetchHistoryEntities()
+    val history: LiveData<List<SlBookRelations>>
+
+
+//    fun fetchHistory() {
+//        viewModelScope.launch(Dispatchers.IO) {
+//            history.value = bookLibraryRepository.fetchHistory()
+//        }
+//    }
 
     fun moveItem(from: Int, to: Int, playlistId: Long){
         viewModelScope.launch(Dispatchers.IO) {
@@ -84,6 +96,12 @@ class BookLibraryViewModel @Inject constructor(
 
     }
 
+    fun addToHistory(slBookId: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            bookLibraryRepository.addToHistory(slBookId)
+        }
+    }
+
     init {
 
         if (!hasFetched) {
@@ -108,6 +126,13 @@ class BookLibraryViewModel @Inject constructor(
                 emit(bookLibraryRepository.getAllSearchBooks(input))
             }
         }
+
+        history = historyEntities.switchMap {
+            liveData(context = viewModelScope.coroutineContext + Dispatchers.IO) {
+                emit(bookLibraryRepository.fetchHistory(it))
+            }
+        }
+
         //        getPlaylists()
     }
 
@@ -147,6 +172,11 @@ class BookLibraryViewModel @Inject constructor(
             bookDetails.value = bookLibraryRepository.fetchBookDetails(bookId)
         }
     }
+
+//    fun fetchHistory(){
+//            history.value = bookLibraryRepository.fetchHistory()
+//
+//    }
 
 }
 

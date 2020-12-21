@@ -63,7 +63,11 @@ import javax.inject.Inject
         }, object : onClickListener {
             override fun onClick(adapterPosition: Int) {
                 val adapt = binding.playlistBooks.adapter as BookLibraryAdapter
-                val fragment = BookDetailsFragment.newInstance(adapt.data[adapterPosition].slBook.slbookId)
+                val slBookId = adapt.data[adapterPosition].slBook.slbookId
+                val fragment = BookDetailsFragment.newInstance(slBookId)
+
+                viewModel.addToHistory(slBookId)
+
                 activity?.supportFragmentManager
                         ?.beginTransaction()?.replace(R.id.frame_layout, fragment)
                         ?.commit()
@@ -92,6 +96,22 @@ import javax.inject.Inject
                         DOWN or
                         START or
                         END, 0) {
+
+                    override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+                        super.onSelectedChanged(viewHolder, actionState)
+
+                        if(actionState == ACTION_STATE_DRAG){
+                            viewHolder?.itemView?.alpha = 0.5f
+                        }
+                    }
+
+                    override fun clearView(recyclerView: RecyclerView,
+                                           viewHolder: RecyclerView.ViewHolder) {
+                        super.clearView(recyclerView, viewHolder)
+                        viewHolder?.itemView?.alpha = 1.0f
+                    }
+
+
 
                     override fun onMove(recyclerView: RecyclerView,
                                         viewHolder: RecyclerView.ViewHolder,

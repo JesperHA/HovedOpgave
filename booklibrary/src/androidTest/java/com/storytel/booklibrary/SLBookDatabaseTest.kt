@@ -51,33 +51,33 @@ class SLBookDatabaseTest {
         Timber.i("Database closed")
     }
 
-    @Test
-    @Throws(Exception::class)
-    fun insertAndGetSLBook() {
-
-
-        slBookDao.insertSLBook(slBook)
-        slBookDao.insertBook(book)
-        slBookDao.insertEBook(eBook)
-        slBookDao.insertABook(aBook)
-        slBookDao.insertEntireBook(slBook2, book, aBook2, eBook)
-
-//        val bookinfo = slBookDao.getAllBooks()[0].book.authorAsString
-//        val bookinfo2 = slBookDao.getAllBooks()[0].slBook.restriction
-//        val bookinfo3 = slBookDao.getAllBooks()[0].eBook.isComing
-//        val bookinfo4 = slBookDao.getAllBooks()[0].aBook.narratorAsString
-
-        val bookOnKey = slBookDao.get(502).aBook.narratorAsString
-
-
-//        assertEquals("Bjarke", bookinfo)
-//        assertEquals(1, bookinfo2)
-//        assertEquals(1, bookinfo3)
-//        assertEquals("Bjarne Bendtsen", bookinfo4)
-
-        assertEquals("Bjarne Bendtsen", bookOnKey)
-
-    }
+//    @Test
+//    @Throws(Exception::class)
+//    fun insertAndGetSLBook() {
+//
+//
+//        slBookDao.insertSLBook(slBook)
+//        slBookDao.insertBook(book)
+//        slBookDao.insertEBook(eBook)
+//        slBookDao.insertABook(aBook)
+//        slBookDao.insertEntireBook(slBook2, book, aBook2, eBook)
+//
+////        val bookinfo = slBookDao.getAllBooks()[0].book.authorAsString
+////        val bookinfo2 = slBookDao.getAllBooks()[0].slBook.restriction
+////        val bookinfo3 = slBookDao.getAllBooks()[0].eBook.isComing
+////        val bookinfo4 = slBookDao.getAllBooks()[0].aBook.narratorAsString
+//
+//        val bookOnKey = slBookDao.get(502).aBook.narratorAsString
+//
+//
+////        assertEquals("Bjarke", bookinfo)
+////        assertEquals(1, bookinfo2)
+////        assertEquals(1, bookinfo3)
+////        assertEquals("Bjarne Bendtsen", bookinfo4)
+//
+//        assertEquals("Bjarne Bendtsen", bookOnKey)
+//
+//    }
 
 //    @Test
 //    @Throws(Exception::class)
